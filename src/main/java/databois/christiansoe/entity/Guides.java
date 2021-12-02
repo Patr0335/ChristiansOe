@@ -1,21 +1,19 @@
 package databois.christiansoe.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table( name = "tours")
 public class Guides {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    String guideName;
-    String guideLength;
+    @Column( nullable = false)
+    private String guideName;
+    private String guideLength;
 
-    public Guides(int id, String guideName, String guideLength) {
-        this.id = id;
+    public Guides(String guideName, String guideLength) {
         this.guideName = guideName;
         this.guideLength = guideLength;
     }
