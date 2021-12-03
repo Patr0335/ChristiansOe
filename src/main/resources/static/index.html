@@ -42,7 +42,10 @@
     sessionStorage.setItem("SERVER_URL","christiansoe/tour"); //This will be available in all files, as demonstrated below
     const SERVER_URL = sessionStorage.getItem("SERVER_URL");
     /*
-
+    TODO:
+    Use fetch with SERVER_URL to fetch all persons from the backend a create the required (using map) table-rows
+    to render all persons on the page
+     */
 
     fetch(SERVER_URL)
         .then(function(response) {
