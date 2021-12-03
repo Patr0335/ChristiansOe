@@ -13,7 +13,7 @@
 </head>
 
 <body class="container">
-<h1>Main Page</h1>
+<h1>Tour List</h1>
 <!--<p><a href="add.html">Add</a></p>-->
 <!--<p><a href="findOneAndEdit.html">Find/Edit</a></p>-->
 <!--<p><a href="deleteOne.html">Delete one</a></p>-->
@@ -26,16 +26,51 @@
         <th scope="col">Guide Length</th>
     </tr>
     </thead>
-    <tbody id="tbody">
-    <tr th:each="Guides : ${tours}" scope="row">
-    <td th:text="${tours.id}"></td>
-    <td th:text="${tours.guide_name}"></td>
-    <td th:text="${tours.guide_length}"></td>
-
-    </tr>
-    </tbody>
+    <tbody id="tbody"></tbody>
 
 </table>
+
+<table id="tour-table-body" class="table">
+    <thead>
+    </thead>
+    <tbody id="tbody1"></tbody>
+
+</table>
+
+<script>
+    //For a separated front and backend you must provide the full URL including protocol to the server
+    sessionStorage.setItem("SERVER_URL","christiansoe/tour"); //This will be available in all files, as demonstrated below
+    const SERVER_URL = sessionStorage.getItem("SERVER_URL");
+    /*
+
+
+    fetch(SERVER_URL)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+            makeRows(data)
+        });
+
+    function makeRows(data) {
+        const tours = data
+        const rows = tours.map(u => `
+         <tr>
+           <td>${(u.id)}</td>
+           <td>${(u.name)}</td>
+           <td>${(u.tourtype.type)}</td>
+           <td>${(u.duration)}</td>
+           <td>${(u.price)}</td>
+           <td>${(u.exercise_id)}</td>
+           <td>${(u.username)}</td>
+           <td>${(u.file_id)}</td>
+         </tr>
+        `)
+        document.getElementById("tour-table-body").innerHTML = rows.join("")
+
+    }
+</script>
 </body>
 
 </html>

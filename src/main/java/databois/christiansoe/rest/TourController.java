@@ -1,8 +1,8 @@
 package databois.christiansoe.rest;
 
 
-import databois.christiansoe.entity.Guides;
-import databois.christiansoe.repositories.GuideRepository;
+import databois.christiansoe.entity.Tour;
+import databois.christiansoe.repositories.TourRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,27 +13,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("guides/tours")
-public class GuideController {
+@RequestMapping("christiansoe/tour")
+public class TourController {
 
-    private GuideRepository guideRepository;
+    private TourRepository tourRepository;
 
     //Constructor injection i stedet for field injection (Autowired)
-    public GuideController(GuideRepository guideRepository) {
-        this.guideRepository = guideRepository;
+    public TourController(TourRepository tourRepository) {
+        this.tourRepository = tourRepository;
     }
 
 
     @GetMapping
-    Iterable<Guides> getAll() {
-        return guideRepository.findAll();
+    Iterable<Tour> getAll() {
+        return tourRepository.findAll();
     }
 
     //HTTP GET (/tours)
-//    @GetMapping("/tours")
-//    public ResponseEntity<List<Guides>> findALl() {
-//        List<Guides> tours = new ArrayList<>();
-//        guideRepository.findAll().forEach(tours::add);
+//    @GetMapping("/tour")
+//    public ResponseEntity<List<Tour>> findALl() {
+//        List<Tour> tours = new ArrayList<>();
+//        tourRepository.findAll().forEach(tours::add);
 //        //ResponseEntitiy builder - først status OK/200- så til sidst body. body=collection of tours
 //        return ResponseEntity.status(HttpStatus.OK).body(tours);
 //    }
