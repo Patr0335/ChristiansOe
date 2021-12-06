@@ -3,24 +3,21 @@ package databois.christiansoe.entity;
 import javax.persistence.*;
 
 @Entity
-@Table ( name ="tourguide")
+@Table(name = "tourguide")
 public class TourGuide {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-
-
 
     @Column(nullable = false)
     private String username;
     private String password;
 
 
-     public TourGuide(String username, String password) {
-                this.username = username;
-                this.password = password;
-            }
+    public TourGuide(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public TourGuide() {
 
@@ -49,10 +46,6 @@ public class TourGuide {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
-
-
 
 
 }

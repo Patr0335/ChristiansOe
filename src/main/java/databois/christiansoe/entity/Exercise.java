@@ -11,6 +11,15 @@ public class Exercise {
 
     @Column(nullable = false)
     private String name;
+    private String description;
+    private int duration;
+
+
+    public Exercise(String name, String description, int duration) {
+        this.name = name;
+        this.description = description;
+        this.duration = duration;
+    }
 
     public Exercise() {
 
@@ -48,14 +57,4 @@ public class Exercise {
         this.duration = duration;
     }
 
-    private String description;
-    private int duration;
-
-
-    public Exercise(String name, String description, int duration) {
-        this.name = name;
-        this.description = description;
-        this.duration = duration;
-
-    }
 }

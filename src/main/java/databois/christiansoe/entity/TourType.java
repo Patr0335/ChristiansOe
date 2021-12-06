@@ -1,5 +1,4 @@
 package databois.christiansoe.entity;
-
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +16,6 @@ public class TourType {
     }
 
     public TourType() {
-
     }
 
     public int getId() {

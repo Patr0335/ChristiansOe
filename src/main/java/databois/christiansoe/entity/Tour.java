@@ -17,19 +17,27 @@ public class Tour {
     @JoinColumn(name = "type_id", referencedColumnName = "id")
     private TourType tourtype;
     private int duration;
-    private int price;
-    private int exercise_id;
-    private int tourguide_id;
-    private int file_id;
 
-    public Tour(String name, TourType tourtype, int duration, int price, int exercise_id, int tourguide_id, int file_id) {
+
+    @ManyToOne
+    @JoinColumn(name = "exercise_id",referencedColumnName = "id")
+    private Exercise exercise;
+
+    @OneToOne
+    @JoinColumn(name = "tourguide_id",referencedColumnName = "id")
+    private TourGuide tourguide;
+
+    @ManyToOne
+    @JoinColumn(name = "file_id",referencedColumnName = "id")
+    private FileType fileType;
+
+    public Tour(String name, TourType tourtype, int duration, int exercise_id, int tourguide_id, FileType fileType) {
         this.name = name;
         this.tourtype = tourtype;
         this.duration = duration;
-        this.price = price;
-        this.exercise_id = exercise_id;
-        this.tourguide_id = tourguide_id;
-        this.file_id = file_id;
+        this.exercise = exercise;
+        this.tourguide = tourguide;
+        this.fileType = fileType;
     }
 
     public Tour() {
@@ -67,37 +75,31 @@ public class Tour {
         this.duration = duration;
     }
 
-    public int getPrice() {
-        return price;
+    public Exercise getExercise() {
+        return exercise;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
     }
 
-    public int getExercise_id() {
-        return exercise_id;
+    public TourGuide getTourguide() {
+        return tourguide;
     }
 
-    public void setExercise_id(int exercise_id) {
-        this.exercise_id = exercise_id;
+    public void setTourguide(TourGuide tourguide) {
+        this.tourguide = tourguide;
     }
 
-    public int getTourGuide_id() {
-        return tourguide_id;
+    public FileType getFileType() {
+        return fileType;
     }
 
-    public void setTourGuide_id(int guide_id) {
-        this.tourguide_id = tourguide_id;
+    public void setFileType(FileType fileType) {
+        this.fileType = fileType;
     }
 
-    public int getFile_id() {
-        return file_id;
-    }
 
-    public void setFile_id(int file_id) {
-        this.file_id = file_id;
-    }
 }
 
 

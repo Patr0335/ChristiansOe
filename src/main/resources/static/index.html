@@ -39,7 +39,7 @@
 
 <script>
     //For a separated front and backend you must provide the full URL including protocol to the server
-    sessionStorage.setItem("SERVER_URL","christiansoe/tour"); //This will be available in all files, as demonstrated below
+    sessionStorage.setItem("SERVER_URL", "christiansoe/tour"); //This will be available in all files, as demonstrated below
     const SERVER_URL = sessionStorage.getItem("SERVER_URL");
     /*
     TODO:
@@ -48,10 +48,10 @@
      */
 
     fetch(SERVER_URL)
-        .then(function(response) {
+        .then(function (response) {
             return response.json();
         })
-        .then(function(data) {
+        .then(function (data) {
             console.log(data);
             makeRows(data)
         });
@@ -63,11 +63,10 @@
            <td>${(u.id)}</td>
            <td>${(u.name)}</td>
            <td>${(u.tourtype.type)}</td>
-           <td>${(u.duration)}</td>
-           <td>${(u.price)}</td>
-           <td>${(u.exercise_id)}</td>
-           <td>${(u.username)}</td>
-           <td>${(u.file_id)}</td>
+           <td>${(u.duration) + "min"}</td>
+           <td>${(u.exercise.description)}</td>
+           <td>${(u.tourguide.username)}</td>
+
          </tr>
         `)
         document.getElementById("tour-table-body").innerHTML = rows.join("")
@@ -77,3 +76,5 @@
 </body>
 
 </html>
+
+<!--<td>${(u.filetype.type)}</td>-->

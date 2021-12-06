@@ -2,25 +2,25 @@ package databois.christiansoe.entity;
 import javax.persistence.*;
 
 @Entity
-@Table (name= "file")
-public class File {
-
-
+@Table( name = "file")
+public class FileType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
+    @Column(nullable = false)
     private String timestamp;
     private String type;
+    private String name;
 
-    public File(String name, String timestamp, String type) {
+    public FileType(String name, String timestamp, String type) {
         this.name = name;
         this.timestamp = timestamp;
         this.type = type;
     }
 
-    @Column(nullable = false)
-    private String name;
+    public FileType(){
+    }
 
     public int getId() {
         return id;
@@ -56,5 +56,5 @@ public class File {
 
 
 
-    public File(){}
+
 }
