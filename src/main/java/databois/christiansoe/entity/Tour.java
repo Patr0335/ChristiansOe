@@ -24,7 +24,7 @@ public class Tour {
     @JoinColumn(name = "exercise_id",referencedColumnName = "id")
     private Exercise exercise;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "tourguide_id",referencedColumnName = "id")
     private TourGuide tourguide;
 
