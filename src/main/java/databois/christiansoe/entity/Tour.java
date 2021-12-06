@@ -16,6 +16,7 @@ public class Tour {
     @ManyToOne
     @JoinColumn(name = "type_id", referencedColumnName = "id")
     private TourType tourtype;
+
     private int duration;
 
 
@@ -31,7 +32,7 @@ public class Tour {
     @JoinColumn(name = "file_id",referencedColumnName = "id")
     private FileType fileType;
 
-    public Tour(String name, TourType tourtype, int duration, int exercise_id, int tourguide_id, FileType fileType) {
+    public Tour(String name, TourType tourtype, int duration, Exercise exercise, TourGuide tourguide, FileType fileType) {
         this.name = name;
         this.tourtype = tourtype;
         this.duration = duration;
