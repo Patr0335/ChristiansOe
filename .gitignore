@@ -32,5 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 
-spring.datasource.username=root
-spring.datasource.password=root
+application.properties
