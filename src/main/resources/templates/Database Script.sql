@@ -77,16 +77,15 @@ COLLATE = utf8mb4_0900_ai_ci;
 CREATE TABLE IF NOT EXISTS `christiansoe`.`tour` (
   `id` INT NOT NULL,
   `name` VARCHAR(45) NULL DEFAULT NULL,
-  `type` INT NULL DEFAULT NULL,
+  `type_id` INT NULL DEFAULT NULL,
   `duration` INT NULL DEFAULT NULL,
-  `price` INT NULL DEFAULT NULL,
   `exercise_id` INT NULL DEFAULT NULL,
   `tourguide_id` INT NULL DEFAULT NULL,
   `file_id` INT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `id_idx` (`exercise_id` ASC) VISIBLE,
   INDEX `id_idx1` (`tourguide_id` ASC) VISIBLE,
-  INDEX `type_idx` (`type` ASC) VISIBLE,
+  INDEX `type_idx` (`type_id` ASC) VISIBLE,
   INDEX `file_id_idx` (`file_id` ASC) VISIBLE,
   CONSTRAINT `exercise_id`
     FOREIGN KEY (`exercise_id`)
@@ -98,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `christiansoe`.`tour` (
     FOREIGN KEY (`tourguide_id`)
     REFERENCES `christiansoe`.`tourguide` (`id`),
   CONSTRAINT `type`
-    FOREIGN KEY (`type`)
+    FOREIGN KEY (`type_id`)
     REFERENCES `christiansoe`.`tour_type` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
