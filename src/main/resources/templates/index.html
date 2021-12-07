@@ -2,7 +2,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://thymeleaf.org">
 
-<head th:replace="fragments/head.html(pageTitle = 'Frontpage - ChristiansØ')">
+<head>
+
+
+
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--    <link rel="stylesheet" href="/style.css">-->
+    <link th:href="@{/styles/style.css}" rel="stylesheet">
+
+    Message Data bois
+    <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png"/>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <style>
+        #chrMap {
+            height: 180px;
+            width: auto;
+        }</style>
 </head>
 
 <header th:replace="fragments/header.html">
@@ -36,7 +60,23 @@
 
 </table>
 
+<div id="chrMap"></div>
+
 <script>
+
+    const mymap = L.map('chrMap').setView([55.32037, 15.18828], 17);
+    // const marker = L.marker([0,0]).addTo(mymap);
+    const marker = L.marker([55.320126, 15.186754]).addTo(mymap);
+
+    const attribution =
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+    const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    const tiles = L.tileLayer(tileUrl, {attribution});
+    tiles.addTo(mymap);
+
+    // L.marker([55.320126, 15.186754]).addTo(map);
+
+
     //For a separated front and backend you must provide the full URL including protocol to the server
     sessionStorage.setItem("SERVER_URL", "christiansoe/tour"); //This will be available in all files, as demonstrated below
     const SERVER_URL = sessionStorage.getItem("SERVER_URL");

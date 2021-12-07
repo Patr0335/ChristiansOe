@@ -1,16 +1,11 @@
-package databois.christiansoe.rest;
+package databois.christiansoe.controller;
 
 
 import databois.christiansoe.entity.Tour;
 import databois.christiansoe.repositories.TourRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("christiansoe/tour")
@@ -24,10 +19,15 @@ public class TourController {
     }
 
 
-    @GetMapping
+    @GetMapping("index")
     Iterable<Tour> getAll() {
         return tourRepository.findAll();
     }
+
+
+
+
+
 
     //HTTP GET (/tours)
 //    @GetMapping("/tour")
