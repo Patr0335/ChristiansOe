@@ -1,6 +1,16 @@
 #chrMap {
-    height: 180px;
+    height: 300px;
     width: auto;
+    flex: 1 1 0;
+}
+
+.content-layout {
+    display: flex;
+    width: 100%;
+}
+
+#tour-table-body {
+    flex: 1 1 0;
 }
 
 
@@ -8,7 +18,7 @@
 
 /* Style the header with a grey background and some padding */
 .headerfragment {
-    background: url("images/bgimage.jpg") no-repeat;
+    /*background: url("images/bgimage.jpg") no-repeat;*/
     overflow: hidden;
     background-color: #212121;
     padding: 20px 10px;
@@ -32,9 +42,9 @@
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
 .headerfragment a.logo {
     /*background: url("images/icon64.jpg") right center no-repeat;*/
-    width: 254px;
-    height: 144px;
-    background: url("images/projecture-header.png") center center no-repeat;
+    width: 400px;
+    height: 126px;
+    background: url("../images/chrlogo.png") center center no-repeat;
     font-size: 25px;
     font-weight: bold;
     background-color: #464646;

@@ -19,7 +19,7 @@ public class TourController {
     }
 
 
-    @GetMapping("index")
+    @GetMapping("")
     Iterable<Tour> getAll() {
         return tourRepository.findAll();
     }

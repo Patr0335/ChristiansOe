@@ -22,11 +22,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
             crossorigin=""></script>
-    <style>
-        #chrMap {
-            height: 180px;
-            width: auto;
-        }</style>
+
 </head>
 
 <header th:replace="fragments/header.html">
@@ -53,6 +49,7 @@
 
 </table>
 
+<div class="content-layout">
 <table id="tour-table-body" class="table">
     <thead>
     </thead>
@@ -61,7 +58,7 @@
 </table>
 
 <div id="chrMap"></div>
-
+</div>
 <script>
 
     const mymap = L.map('chrMap').setView([55.32037, 15.18828], 17);
@@ -97,7 +94,8 @@
 
     function makeRows(data) {
         const tours = data
-        const rows = tours.map(u => `
+        console.log(data)
+        const rows = tours?.map(u => `
          <tr>
            <td>${(u.id)}</td>
            <td>${(u.name)}</td>
