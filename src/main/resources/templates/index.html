@@ -18,12 +18,15 @@
 <!--<p><a href="findOneAndEdit.html">Find/Edit</a></p>-->
 <!--<p><a href="deleteOne.html">Delete one</a></p>-->
 
-<table id="user-table-body" class="table">
+<table id="header-table-body" class="table">
     <thead>
     <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Guide Name</th>
-        <th scope="col">Guide Length</th>
+        <th>Id</th>
+        <th>Tour Name</th>
+        <th>Tour Type</th>
+        <th>Tour Duration</th>
+        <th>Tour Exercise</th>
+        <th>Tour Guide</th>
     </tr>
     </thead>
     <tbody id="tbody"></tbody>
@@ -73,7 +76,7 @@
     }
 </script>
 </body>
-
+<!--<footer th:replace="fragments/footer.html"></footer>-->
 </html>
 
 <!--<td>${(u.filetype.type)}</td>-->
