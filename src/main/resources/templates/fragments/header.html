@@ -17,7 +17,46 @@
             </a>
             <a class="active" href="">About</a>
         </div>
+        <div id="loginButton" class="active">
+
+
+            <form class="headerfragment" onsubmit="return validateAdmin()" style=" z-index: 2;"  name="adminLogin" action="/admin.html">
+
+
+                <div class="header-right">
+                    <label class="active" for="uname"><b>Username</b></label>
+                    <input  type="text" placeholder="Enter Username" name="uname" required>
+
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+
+                    <button type="submit">Login</button>
+
+                </div>
+
+            </form>
+        </div>
+        <script>
+
+            function validateAdmin() {
+                let x = document.forms["adminLogin"] ["uname"].value;
+                let x2 = document.forms["adminLogin"] ["psw"].value;
+                if (x !== "admin") {
+                    alert("Wrong username or password!");
+                    return false
+                }
+                if (x2 !== "admin") {
+                    alert("Wrong username or password!");
+                    return false
+                }
+
+            }
+        </script>
     </div>
+    <div>
+        <img src="https://www.christiansoe.dk/wp-content/uploads/2018/12/img-2981-edited-720x314.jpg" alt="">
+    </div>
+
     <link rel="stylesheet" href="/static/styles/style.css">
 </header>
 </html>
