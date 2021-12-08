@@ -3,11 +3,14 @@
       xmlns:th="http://thymeleaf.org" lang="da">
 
 <head>
+
+
+
     <meta charset="UTF-8">
     <title th:text="${pageTitle}"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--    <link rel="stylesheet" href="/style.css">-->
     <link th:href="@{/styles/style.css}" rel="stylesheet">
-
 
     <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png"/>
 
@@ -60,7 +63,15 @@
 </div>
 <script>
 
+    const mymap = L.map('chrMap').setView([55.32037, 15.18828], 17);
+    // const marker = L.marker([0,0]).addTo(mymap);
+    const marker = L.marker([55.320126, 15.186754]).addTo(mymap);
 
+    const attribution =
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+    const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    const tiles = L.tileLayer(tileUrl, {attribution});
+    tiles.addTo(mymap);
 
     // L.marker([55.320126, 15.186754]).addTo(map);
 
@@ -79,13 +90,11 @@
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
             makeRows(data)
         });
 
     function makeRows(data) {
         const tours = data
-        console.log(data)
         const rows = tours?.map(u => `
          <tr>
            <td>${(u.id)}</td>
