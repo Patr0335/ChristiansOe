@@ -1,7 +1,9 @@
 #chrMap {
-    height: 300px;
-    width: auto;
+    width: 400px;
+    height: 600px;
     flex: 1 1 0;
+    position: relative;
+    outline: none;
 }
 
 .content-layout {
@@ -11,8 +13,13 @@
 
 #tour-table-body {
     flex: 1 1 0;
-}
+    background-color: dimgrey;
 
+}
+/*Body*/
+.container{
+    background-color: #9f9f9f;
+}
 
 /* HEADER */
 
@@ -93,6 +100,7 @@
     padding: 50px 200px 50px 0;
     color:#f0f9ff;
     background-color: #212121;
+    position: absolute;
 }
 
 .footer-dark h3 {
