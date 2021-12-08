@@ -12,7 +12,6 @@
 <!--    <link rel="stylesheet" href="/style.css">-->
     <link th:href="@{/styles/style.css}" rel="stylesheet">
 
-    Message Data bois
     <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png"/>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -88,13 +87,11 @@
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
             makeRows(data)
         });
 
     function makeRows(data) {
         const tours = data
-        console.log(data)
         const rows = tours?.map(u => `
          <tr>
            <td>${(u.id)}</td>

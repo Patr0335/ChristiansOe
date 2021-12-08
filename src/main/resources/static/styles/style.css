@@ -20,7 +20,7 @@
 .headerfragment {
     /*background: url("images/bgimage.jpg") no-repeat;*/
     overflow: hidden;
-    background-color: #212121;
+    /*background-color: #212121;*/
     padding: 20px 10px;
     border-radius: 6px;
 
@@ -53,7 +53,7 @@
 }
 .headerfragment a.active {
     float: left;
-    color: #60ff67;
+    color: white;
     text-align: center;
     font-weight: bold;
     padding: 12px;
@@ -61,13 +61,13 @@
     font-size: 18px;
     line-height: 25px;
     border-radius: 4px;
-    background: #010B26;
+    background: #464646;
     margin: 2px;
 }
 /*Style the active/current link*/
 .headerfragment a.active:hover {
-    background-color: #212121;
-    color: #ddd;
+    background-color: white;
+    color: #464646;
     border-radius: 4px;
 }
 
@@ -92,7 +92,7 @@
 .footer-dark {
     padding: 50px 200px 50px 0;
     color:#f0f9ff;
-    background-color: #212121;
+    background-color: gray;
 }
 
 .footer-dark h3 {
