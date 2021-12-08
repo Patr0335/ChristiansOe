@@ -1,7 +1,9 @@
 #chrMap {
-    height: 300px;
-    width: auto;
+    width: 400px;
+    height: 600px;
     flex: 1 1 0;
+    position: relative;
+    outline: none;
 }
 
 .content-layout {
@@ -20,7 +22,7 @@
 .headerfragment {
     /*background: url("images/bgimage.jpg") no-repeat;*/
     overflow: hidden;
-    /*background-color: #212121;*/
+    background-color: #212121;
     padding: 20px 10px;
     border-radius: 6px;
 
