@@ -62,20 +62,6 @@
 <div id="chrMap"></div>
 </div>
 <script>
-
-    const mymap = L.map('chrMap').setView([55.32037, 15.18828], 17);
-    // const marker = L.marker([0,0]).addTo(mymap);
-    const marker = L.marker([55.320126, 15.186754]).addTo(mymap);
-
-    const attribution =
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-    const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    const tiles = L.tileLayer(tileUrl, {attribution});
-    tiles.addTo(mymap);
-
-    // L.marker([55.320126, 15.186754]).addTo(map);
-
-
     //For a separated front and backend you must provide the full URL including protocol to the server
     sessionStorage.setItem("SERVER_URL", "christiansoe/tour"); //This will be available in all files, as demonstrated below
     const SERVER_URL = sessionStorage.getItem("SERVER_URL");
