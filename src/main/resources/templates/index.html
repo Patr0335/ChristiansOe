@@ -31,8 +31,12 @@
 </header>
 
 <body class="container">
+
 <div>
     <h1>Tour List</h1>
+    <div style="display: flex; justify-content: flex-end">
+        <h3>Bridge status: </h3> <h3 style="color: green" id="bridge_status"> Open for pedestrians</h3>
+    </div>
     <div id="button-container" style="display: none">
         <p style="padding: 0 4px"><a href="add.html">Add</a></p>
         <p style="padding: 0 4px"><a href="findOneAndEdit.html">Find/Edit</a></p>
@@ -67,6 +71,20 @@
 </div>
 <script>
 
+    let text = ["Closed for pedestrians","Open for pedestrians"]
+    let counter = 0;
+    let elem = document.getElementById("bridge_status")
+    let inst = setInterval(change, 5*60*1000)
+
+    function change(){
+        elem.innerText = text[counter]
+        elem.style.color = "red"
+        counter++
+        if (counter >= text.length){
+            counter = 0;
+            elem.style.color = "green"
+        }
+    }
 
     //For a separated front and backend you must provide the full URL including protocol to the server
     sessionStorage.setItem("SERVER_URL", "christiansoe/tour"); //This will be available in all files, as demonstrated below
