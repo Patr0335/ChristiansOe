@@ -18,44 +18,25 @@
             <a class="active" href="">About</a>
         </div>
         <div id="loginButton" class="active">
-
-
-            <form class="headerfragment" onsubmit="return validateAdmin()" style=" z-index: 2;"  name="adminLogin" action="/admin.html">
-
-
                 <div class="header-right">
-                    <ul>
+                    <ul style="list-style-type: none;">
                         <li>
-                            <label class="active" for="uname"><b>Username</b></label>
-                            <input  type="text" placeholder="Enter Username" name="uname" required>
-                        </li>
-                        <li>
-                            <label for="psw"><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="psw" required>
-                        </li>
-                        <li>
-                            <button type="submit">Login</button>
+                            <button id="login-button" type="button">Login</button>
                         </li>
                     </ul>
                 </div>
-
-            </form>
         </div>
         <script>
+        document.getElementById('login-button').onclick = function() {
+            document.getElementById('button-container').style.display = 'flex';
+        }
 
-            function validateAdmin() {
-                let x = document.forms["adminLogin"] ["uname"].value;
-                let x2 = document.forms["adminLogin"] ["psw"].value;
-                if (x !== "admin") {
-                    alert("Wrong username or password!");
-                    return false
-                }
-                if (x2 !== "admin") {
-                    alert("Wrong username or password!");
-                    return false
-                }
 
-            }
+
+
+
+
+
         </script>
     </div>
 <!--    <div>-->

@@ -31,33 +31,37 @@
 </header>
 
 <body class="container">
-<h1>Tour List</h1>
-<!--<p><a href="add.html">Add</a></p>-->
-<!--<p><a href="findOneAndEdit.html">Find/Edit</a></p>-->
-<!--<p><a href="deleteOne.html">Delete one</a></p>-->
-
-<table id="header-table-body" class="table">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Tour Name</th>
-        <th>Tour Type</th>
-        <th>Tour Duration</th>
-        <th>Tour Exercise</th>
-        <th>Tour Guide</th>
-    </tr>
-    </thead>
-    <tbody id="tbody"></tbody>
-
-</table>
+<div>
+    <h1>Tour List</h1>
+    <div id="button-container" style="display: none">
+        <p style="padding: 0 4px"><a href="add.html">Add</a></p>
+        <p style="padding: 0 4px"><a href="findOneAndEdit.html">Find/Edit</a></p>
+        <p style="padding: 0 4px"><a href="deleteOne.html">Delete one</a></p>
+    </div>
+</div>
 
 <div class="content-layout">
-    <table id="tour-table-body" class="table">
+    <table id="header-table-body" class="table">
         <thead>
+        <tr>
+            <th>Id</th>
+            <th>Tour Name</th>
+            <th>Tour Type</th>
+            <th>Tour Duration</th>
+            <th>Tour Exercise</th>
+            <th>Tour Guide</th>
+        </tr>
         </thead>
-        <tbody id="tbody1"></tbody>
+        <tbody id="tbody"></tbody>
 
     </table>
+
+<!--    <table id="tour-table-body" class="table">-->
+<!--        <thead>-->
+<!--        </thead>-->
+<!--        <tbody id="tbody1"></tbody>-->
+
+<!--    </table>-->
 
     <div id="chrMap"></div>
 </div>
@@ -89,13 +93,11 @@
            <td>${(u.duration) + "min"}</td>
            <td>${(u.exercise.description)}</td>
            <td>${(u.tourguide.username)}</td>
-           <td><input type="radio" id="radiobt1" name="Show on map" checked></td>
-           <td><input type="radio" id="radiobt1" name="Show on map" checked></td>
-           <td><input type="radio" id="radiobt1" name="Show on map" checked></td>
+           <td><input type="checkbox" id="radiobt1" name="Show on map" checked></td>
          </tr>
         `)
 
-        document.getElementById("tour-table-body").innerHTML = rows.join("")
+        document.getElementById("tbody").innerHTML = rows.join("")
     }
     //creating the map
     const mymap = L.map('chrMap').setView([55.32075108192345, 15.186064173660071], 15.5);
