@@ -66,6 +66,8 @@
     <div id="chrMap"></div>
 </div>
 <script>
+
+
     //For a separated front and backend you must provide the full URL including protocol to the server
     sessionStorage.setItem("SERVER_URL", "christiansoe/tour"); //This will be available in all files, as demonstrated below
     const SERVER_URL = sessionStorage.getItem("SERVER_URL");
@@ -93,7 +95,7 @@
            <td>${(u.duration) + "min"}</td>
            <td>${(u.exercise.description)}</td>
            <td>${(u.tourguide.username)}</td>
-           <td><input type="checkbox" id="radiobt1" name="Show on map" checked></td>
+           <td><input type="checkbox" id="checkbox1" name="checkboxformap"></td>
          </tr>
         `)
 
@@ -107,8 +109,8 @@
     const tiles = L.tileLayer(tileUrl, {attribution});
     tiles.addTo(mymap);
 
-    const marker = L.marker([55.32075108192345, 15.186064173660071]).addTo(mymap);
-    marker.bindPopup("<b>Velkommen til ChristiansØ</b><br>Dette er startpunktet for din tur på Øen");
+    const startMarker = L.marker([55.32075108192345, 15.186064173660071]).addTo(mymap);
+    startMarker.bindPopup("<b>Velkommen til ChristiansØ</b><br>Dette er startpunktet for din tur på Øen");
 
     // let myIcon = L.icon({
     //     iconUrl: 'myIcon.png',
@@ -120,7 +122,7 @@
     //     shadowAnchor: [22, 94]
     // });
     //
-    // L.marker([55.32075108192345, 15.186064173660071], {icon: myIcon}).addTo(mymap);
+    // L.startMarker([55.32075108192345, 15.186064173660071], {icon: myIcon}).addTo(mymap);
     //Placing a circle on the map (for marking areas with plant types or wildlife)
 
 
@@ -140,9 +142,52 @@
             .setLatLng(e.latlng)
             .setContent("You clicked the map at " + e.latlng.toString())
             .openOn(mymap);
-        // L.marker(e.latlng).addTo(mymap);
+        // L.startMarker(e.latlng).addTo(mymap);
     }
     mymap.on('click', onMapClick);
+
+
+//Test af polyline
+    const coastTour = [
+        // [55.32075108192345, 15.186064173660071],
+        [55.320754, 15.186027],
+            [55.321031, 15.186476],
+            [55.321687, 15.186496],
+            [55.322005, 15.186872],
+            [55.322371, 15.186799],
+            [55.322881, 15.187325],
+            [55.322939, 15.188072],
+            [55.323186, 15.188367],
+            [55.322662, 15.188701],
+            [55.322593, 15.189201],
+            [55.321352, 15.189656],
+            [55.320563, 15.189656],
+            [55.320750, 15.190885],
+            [55.320648, 15.191167],
+            [55.32082808192741, 15.191521051518851],
+            [55.320478597777644, 15.19199043809221],
+            [55.32030156533076, 15.19180804787699],
+            [55.32013826745901, 15.191891196357458],
+            [55.31966668383872, 15.191558602433643],
+            [55.318245535782985, 15.19050511514818],
+            [55.317860096015124, 15.188957849500394],
+            [55.31803615202976, 15.188217838617138],
+            [55.31893638500524, 15.18721627217711],
+            [55.3192904317943, 15.186710281136964],
+            [55.32023963877779, 15.186420018256051]
+    ];
+
+
+    // const plantTour = [];
+
+    const tour1 = L.polyline(coastTour, {color: 'blue'}).addTo(mymap);
+    // const tour2 = L.polyline(plantTour, {color: 'blue'}).addTo(mymap);
+
+
+
+
+    // zooms the map to the polyline
+    // mymap.fitBounds(coastTour.getBounds());
 
 
 
