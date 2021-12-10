@@ -5,12 +5,12 @@
 <head>
 
 
-
     <meta charset="UTF-8">
     <title th:text="${pageTitle}"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!--    <link rel="stylesheet" href="/style.css">-->
     <link th:href="@{/styles/style.css}" rel="stylesheet">
+
 
     <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png"/>
 
@@ -31,7 +31,14 @@
 </header>
 
 <body class="container">
+
+<!--<div style="text-align: center;"></div>-->
+
 <div>
+
+
+
+
     <h1>Tour List</h1>
     <div id="button-container" style="display: none">
         <p style="padding: 0 4px"><a href="add.html">Add</a></p>
@@ -50,33 +57,39 @@
             <th>Tour Duration</th>
             <th>Tour Exercise</th>
             <th>Tour Guide</th>
+            <th>Show on map</th>
         </tr>
         </thead>
         <tbody id="tbody"></tbody>
 
     </table>
 
-<!--    <table id="tour-table-body" class="table">-->
-<!--        <thead>-->
-<!--        </thead>-->
-<!--        <tbody id="tbody1"></tbody>-->
+    <!--    <table id="tour-table-body" class="table">-->
+    <!--        <thead>-->
+    <!--        </thead>-->
+    <!--        <tbody id="tbody1"></tbody>-->
 
-<!--    </table>-->
+    <!--    </table>-->
 
     <div id="chrMap"></div>
-</div>
-<script>
 
+</div>
+
+<div style="text-align: center;">
+    <h5>Time until next boat leaves:</h5>
+    <div id="countdown-container">
+        <div id="countdown">
+            <span id="hours">0h</span> :
+            <span id="minutes">0m</span> : <span id="seconds">0s</span>
+        </div>
+    </div>
+</div>
+
+<script>
 
     //For a separated front and backend you must provide the full URL including protocol to the server
     sessionStorage.setItem("SERVER_URL", "christiansoe/tour"); //This will be available in all files, as demonstrated below
     const SERVER_URL = sessionStorage.getItem("SERVER_URL");
-    /*
-    TODO:
-    Use fetch with SERVER_URL to fetch all persons from the backend a create the required (using map) table-rows
-    to render all persons on the page
-     */
-
     fetch(SERVER_URL)
         .then(function (response) {
             return response.json();
@@ -87,20 +100,21 @@
 
     function makeRows(data) {
         const tours = data
-        const rows = tours?.map(u => `
+        const rows = tours?.map(tourData => `
          <tr>
-           <td>${(u.id)}</td>
-           <td>${(u.name)}</td>
-           <td>${(u.tourtype.type)}</td>
-           <td>${(u.duration) + "min"}</td>
-           <td>${(u.exercise.description)}</td>
-           <td>${(u.tourguide.username)}</td>
-           <td><input type="checkbox" id="checkbox1" name="checkboxformap"></td>
+           <td>${(tourData.id)}</td>
+           <td>${(tourData.name)}</td>
+           <td>${(tourData.tourtype.type)}</td>
+           <td>${(tourData.duration) + "min"}</td>
+           <td>${(tourData.exercise.description)}</td>
+           <td>${(tourData.tourguide.username)}</td>
+           <td><input type="radio" id="radiobox" name="radioboxformap"></td>
          </tr>
         `)
 
         document.getElementById("tbody").innerHTML = rows.join("")
     }
+
     //creating the map
     const mymap = L.map('chrMap').setView([55.32075108192345, 15.186064173660071], 15.5);
     const attribution =
@@ -144,51 +158,137 @@
             .openOn(mymap);
         // L.startMarker(e.latlng).addTo(mymap);
     }
+
     mymap.on('click', onMapClick);
 
 
-//Test af polyline
+    //Test af polyline
     const coastTour = [
         // [55.32075108192345, 15.186064173660071],
         [55.320754, 15.186027],
-            [55.321031, 15.186476],
-            [55.321687, 15.186496],
-            [55.322005, 15.186872],
-            [55.322371, 15.186799],
-            [55.322881, 15.187325],
-            [55.322939, 15.188072],
-            [55.323186, 15.188367],
-            [55.322662, 15.188701],
-            [55.322593, 15.189201],
-            [55.321352, 15.189656],
-            [55.320563, 15.189656],
-            [55.320750, 15.190885],
-            [55.320648, 15.191167],
-            [55.32082808192741, 15.191521051518851],
-            [55.320478597777644, 15.19199043809221],
-            [55.32030156533076, 15.19180804787699],
-            [55.32013826745901, 15.191891196357458],
-            [55.31966668383872, 15.191558602433643],
-            [55.318245535782985, 15.19050511514818],
-            [55.317860096015124, 15.188957849500394],
-            [55.31803615202976, 15.188217838617138],
-            [55.31893638500524, 15.18721627217711],
-            [55.3192904317943, 15.186710281136964],
-            [55.32023963877779, 15.186420018256051]
+        [55.321031, 15.186476],
+        [55.321687, 15.186496],
+        [55.322005, 15.186872],
+        [55.322371, 15.186799],
+        [55.322881, 15.187325],
+        [55.322939, 15.188072],
+        [55.323186, 15.188367],
+        [55.322662, 15.188701],
+        [55.322593, 15.189201],
+        [55.321352, 15.189656],
+        [55.320563, 15.189656],
+        [55.320750, 15.190885],
+        [55.320648, 15.191167],
+        [55.32082808192741, 15.191521051518851],
+        [55.320478597777644, 15.19199043809221],
+        [55.32030156533076, 15.19180804787699],
+        [55.32013826745901, 15.191891196357458],
+        [55.31966668383872, 15.191558602433643],
+        [55.318245535782985, 15.19050511514818],
+        [55.317860096015124, 15.188957849500394],
+        [55.31803615202976, 15.188217838617138],
+        [55.31893638500524, 15.18721627217711],
+        [55.3192904317943, 15.186710281136964],
+        [55.32023963877779, 15.186420018256051]
     ];
 
 
     // const plantTour = [];
 
     const tour1 = L.polyline(coastTour, {color: 'blue'}).addTo(mymap);
+
     // const tour2 = L.polyline(plantTour, {color: 'blue'}).addTo(mymap);
 
 
+    // function countdown() {
+    //     time = parseInt(localStorage.time);
+    //
+    //     if (isNaN(time) || time > (180 * 60)) {
+    //         alert("An error occured: time left variable is corrupted, resetting timer");
+    //         localStorage.time = 30 * 60;
+    //         countdown();
+    //         return null;
+    //     }
+    //
+    //     if (time <= 0) {
+    //         alert("The boat is about to leave soon!");
+    //         return null;
+    //     }
+    //
+    //     document.getElementById('timeleft').innerText = formatTime(time);
+    //     time--;
+    //     localStorage.time = time;
+    //     setTimeout('countdown()', 1000);
+    // }
+    //
+    // function formatTime(time) {
+    //     minutes = Math.floor(time / 60);
+    //     seconds = time - minutes * 60;
+    //
+    //     if (String(seconds).length == 1) {
+    //         return String(minutes) + ":0" + String(seconds);
+    //     }
+    //     return String(minutes) + ":" + String(seconds);
+    // }
+    // countdown();
 
 
-    // zooms the map to the polyline
-    // mymap.fitBounds(coastTour.getBounds());
+    // let days = 0; //starting number of days
+    let hours = 3; // starting number of hours
+    let minutes = 0; // starting number of minutes
+    let seconds = 0; // starting number of seconds
 
+    // converts all to seconds
+    let totalSeconds =
+        hours * 60 * 60 + minutes * 60 + seconds;
+
+    //temporary seconds holder
+    let tempSeconds = totalSeconds;
+
+    // calculates number of days, hours, minutes and seconds from a given number of seconds
+    const convert = (value, inSeconds) => {
+        if (value > inSeconds) {
+            let x = value % inSeconds;
+            tempSeconds = x;
+            return (value - x) / inSeconds;
+        } else {
+            return 0;
+        }
+    };
+
+    //sets seconds
+    const setSeconds = (s) => {
+        document.querySelector("#seconds").textContent = s + "s";
+    };
+
+    //sets minutes
+    const setMinutes = (m) => {
+        document.querySelector("#minutes").textContent = m + "m";
+    };
+
+    //sets hours
+    const setHours = (h) => {
+        document.querySelector("#hours").textContent = h + "h";
+    };
+
+    // //sets Days
+    // const setDays = (d) => {
+    //     document.querySelector("#days").textContent = d + "d";
+    // };
+
+    // Update the count down every 1 second
+    const x = setInterval(() => {
+//clears countdown when all seconds are counted
+        if (totalSeconds <= 0) {
+            clearInterval(x);
+        }
+        // setDays(convert(tempSeconds, 24 * 60 * 60));
+        setHours(convert(tempSeconds, 60 * 60));
+        setMinutes(convert(tempSeconds, 60));
+        setSeconds(tempSeconds == 60 ? 59 : tempSeconds);
+        totalSeconds--;
+        tempSeconds = totalSeconds;
+    }, 1000);
 
 
 </script>
