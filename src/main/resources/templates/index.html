@@ -12,7 +12,7 @@
     <!--    <link rel="stylesheet" href="/style.css">-->
     <link th:href="@{/styles/style.css}" rel="stylesheet">
 
-    <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="../images/favicon.png"/>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -64,7 +64,18 @@
 <!--    </table>-->
 
     <div id="chrMap"></div>
+
+
+
 </div>
+<p id="aText"> Press the play button to hear one of our local seals.</p>
+<audio controls id="audio">
+
+<source src="../sound/Seal.wav" type="audio/wav">
+Your browser does not support the audio element.
+</audio>
+
+
 <script>
 
 
@@ -188,7 +199,6 @@
 
     // zooms the map to the polyline
     // mymap.fitBounds(coastTour.getBounds());
-
 
 
 </script>
