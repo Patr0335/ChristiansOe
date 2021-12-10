@@ -9,14 +9,15 @@
     <meta charset="UTF-8">
     <title th:text="${pageTitle}"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!--    <link rel="stylesheet" href="/style.css">-->
+
     <link th:href="@{/styles/style.css}" rel="stylesheet">
 
-    <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="../images/favicon.png"/>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
           crossorigin=""/>
+
     <!-- Skal køres efter leaflet.css -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
@@ -31,11 +32,10 @@
 </header>
 
 <body class="container">
+
+<img id="frontPageLogo" src="../images/christiansoelogo.jpg" alt="Frontpage logo">
+
 <div>
-
-
-
-
     <h1>Tour List</h1>
     <div style="display: flex; justify-content: flex-end">
         <h3>Bridge status: </h3> <h3 style="color: green" id="bridge_status"> Open for pedestrians</h3>
@@ -51,7 +51,7 @@
     <table id="header-table-body" class="table">
         <thead>
         <tr>
-            <th>Id</th>
+<!--            <th>Id</th>-->
             <th>Tour Name</th>
             <th>Tour Type</th>
             <th>Tour Duration</th>
@@ -83,6 +83,16 @@
         </div>
     </div>
 </div>
+
+
+<div id="videodiv">
+    <video width="600" height="400" controls>
+        <source src="../sounds/Birbvid.mp4" type="video/mp4">
+
+        Your browser does not support the video tag.
+    </video>
+</div>
+
 
 <script>
 
@@ -116,7 +126,7 @@
         const tours = data
         const rows = tours?.map(tourData => `
          <tr>
-           <td>${(tourData.id)}</td>
+<!--           <td>${(tourData.id)}</td>-->
            <td>${(tourData.name)}</td>
            <td>${(tourData.tourtype.type)}</td>
            <td>${(tourData.duration) + "min"}</td>
@@ -213,40 +223,10 @@
     // const tour2 = L.polyline(plantTour, {color: 'blue'}).addTo(mymap);
 
 
-    // function countdown() {
-    //     time = parseInt(localStorage.time);
-    //
-    //     if (isNaN(time) || time > (180 * 60)) {
-    //         alert("An error occured: time left variable is corrupted, resetting timer");
-    //         localStorage.time = 30 * 60;
-    //         countdown();
-    //         return null;
-    //     }
-    //
-    //     if (time <= 0) {
-    //         alert("The boat is about to leave soon!");
-    //         return null;
-    //     }
-    //
-    //     document.getElementById('timeleft').innerText = formatTime(time);
-    //     time--;
-    //     localStorage.time = time;
-    //     setTimeout('countdown()', 1000);
-    // }
-    //
-    // function formatTime(time) {
-    //     minutes = Math.floor(time / 60);
-    //     seconds = time - minutes * 60;
-    //
-    //     if (String(seconds).length == 1) {
-    //         return String(minutes) + ":0" + String(seconds);
-    //     }
-    //     return String(minutes) + ":" + String(seconds);
-    // }
-    // countdown();
 
 
-    // let days = 0; //starting number of days
+
+
     let hours = 3; // starting number of hours
     let minutes = 0; // starting number of minutes
     let seconds = 0; // starting number of seconds
@@ -284,10 +264,6 @@
         document.querySelector("#hours").textContent = h + "h";
     };
 
-    // //sets Days
-    // const setDays = (d) => {
-    //     document.querySelector("#days").textContent = d + "d";
-    // };
 
     // Update the count down every 1 second
     const x = setInterval(() => {
@@ -295,7 +271,7 @@
         if (totalSeconds <= 0) {
             clearInterval(x);
         }
-        // setDays(convert(tempSeconds, 24 * 60 * 60));
+
         setHours(convert(tempSeconds, 60 * 60));
         setMinutes(convert(tempSeconds, 60));
         setSeconds(tempSeconds == 60 ? 59 : tempSeconds);

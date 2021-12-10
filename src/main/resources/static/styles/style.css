@@ -5,6 +5,14 @@
 #box:checked + #container #login{ display: block;}
 
 
+#videodiv{
+    text-align:center;
+}
+#frontPageLogo{
+    width: 100%;
+    /*width: 1295px;*/
+
+}
 #countdown-container {
     display: inline-block; /*displays divs on a line*/
     width: 300px; /*gives the div element a width of 300px*/
