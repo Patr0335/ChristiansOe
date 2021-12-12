@@ -1,4 +1,5 @@
-package sem3.rest_js.demo.errors;
+package databois.christiansoe.errors;
+
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
