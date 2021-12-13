@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<h1>Page Add</h1>
+<form>
+    <div><input id="t-name" placeholder="Name" /></div>
+    <br />
+    <div><input type="number" id="t-type" placeholder=" 1-2"></div>
+    <br />
+    <div><input id="t-duration" placeholder="duration"></div>
+    <br />
+    <div><input id="t-exercise" placeholder="exercise 1-2"></div>
+    <br />
+    <div><input id="t-tourguide" placeholder="tourguide 1-2"></div>
+    <button type="button" id="btn-save">Save</button>
+</form>
+<p id="status"></p>
+<p><a href="/">Back</a></p>
+
+
+<script>
+
+    const SERVER_URL = sessionStorage.getItem("SERVER_URL");
+    document.getElementById("btn-save").onclick = (evt) => {
+        // evt.preventDefault() //Why is this required
+
+
+
+        const name = document.getElementById('t-name').value
+        const type_id = document.getElementById('t-type').value
+        const duration = document.getElementById('t-duration').value
+        const exercise_id = document.getElementById('t-exercise').value
+        const tourguide_id = document.getElementById('t-tourguide').value
+
+        const newTour = {
+            name,type_id,duration,exercise_id,tourguide_id
+        }
+
+
+
+        fetch(SERVER_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newTour),
+        })
+            .then(response => response.json())
+            .then(newTour => {
+                console.log(newTour)
+            })
+    }
+</script>
+</body>
+
+</html>
